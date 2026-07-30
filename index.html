@@ -1,0 +1,374 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>REST Deployment Portal – Project Plan</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI",system-ui,sans-serif;font-size:14px;line-height:1.6;background:#f7f8fa;color:#1f2328}
+.wrapper{max-width:900px;margin:0 auto;padding:28px 20px 52px}
+
+/* ── Banner / Cover ── */
+.banner{background:#1b3a6b;color:#fff;border-radius:8px;padding:30px 32px 22px;margin-bottom:28px}
+.banner .eyebrow{font-size:11px;color:#93c5fd;letter-spacing:.07em;text-transform:uppercase;margin-bottom:10px}
+.banner h1{font-size:23px;font-weight:700;line-height:1.3;margin-bottom:18px}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.meta-box{background:rgba(255,255,255,.09);border-radius:5px;padding:9px 13px}
+.meta-box .lbl{font-size:10px;color:#93c5fd;text-transform:uppercase;letter-spacing:.06em}
+.meta-box .val{font-size:13px;font-weight:600;color:#fff;margin-top:1px}
+
+/* ── Section wrapper ── */
+.section{margin-bottom:30px}
+.sec-hdr{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:#1b3a6b;padding:8px 16px;border-radius:5px 5px 0 0}
+.sec-hdr.teal{background:#0d9488}
+.sec-body{background:#fff;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 6px 6px}
+
+/* ── Badges ── */
+.badge{display:inline-block;padding:2px 9px;border-radius:11px;font-size:11px;font-weight:700;white-space:nowrap}
+.b-green{background:#dcfce7;color:#16a34a}
+.b-amber{background:#fef3c7;color:#d97706}
+.b-blue {background:#dbeafe;color:#2563eb}
+.b-red  {background:#fee2e2;color:#dc2626}
+.b-violet{background:#ede9fe;color:#7c3aed}
+
+/* ── Exec highlight rows ── */
+.hi-row{display:flex;align-items:flex-start;padding:10px 16px;border-bottom:1px solid #e5e7eb;gap:10px}
+.hi-row:last-child{border-bottom:none}
+.hi-row.done {background:#f0fdf4}
+.hi-row.prog {background:#fffbeb}
+.hi-row.plan {background:#eff6ff}
+.hi-icon{font-size:15px;flex-shrink:0;margin-top:2px}
+.hi-phase{font-weight:700;color:#1b3a6b;font-size:13px;min-width:190px;flex-shrink:0}
+.hi-detail{color:#57606a;font-size:13px}
+
+/* ── Metrics grid ── */
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px}
+.m-box{text-align:center;padding:11px 8px;border:1px solid #e5e7eb;border-radius:5px;background:#f7f8fa}
+.m-box .num{font-size:22px;font-weight:700;color:#2563eb}
+.m-box .cap{font-size:11px;color:#57606a;margin-top:2px}
+
+/* ── Tables ── */
+table{width:100%;border-collapse:collapse}
+thead th{background:#1b3a6b;color:#fff;font-size:11px;font-weight:700;padding:8px 10px;text-align:left;white-space:nowrap}
+tbody tr:nth-child(even){background:#f7f8fa}
+tbody tr:hover{background:#eff6ff}
+td{padding:7px 10px;font-size:12px;border-bottom:1px solid #e5e7eb;vertical-align:top}
+.tr-parent td{font-weight:700;color:#1b3a6b;background:#eef2f9 !important}
+.tr-sub td{color:#57606a}
+.tr-sub td:nth-child(2){padding-left:22px}
+.col-task{white-space:nowrap;font-weight:700;color:#2563eb;width:52px}
+.col-date{white-space:nowrap;font-size:11px;color:#57606a;width:82px}
+.col-status{width:100px}
+.col-owner{white-space:nowrap;font-size:11px}
+
+/* ── Risk severity ── */
+.sev-h{background:#fee2e2;color:#dc2626;font-weight:700;padding:2px 8px;border-radius:10px;font-size:11px;display:inline-block}
+.sev-m{background:#fef3c7;color:#d97706;font-weight:700;padding:2px 8px;border-radius:10px;font-size:11px;display:inline-block}
+.sev-l{background:#dcfce7;color:#16a34a;font-weight:700;padding:2px 8px;border-radius:10px;font-size:11px;display:inline-block}
+
+/* ── Gantt ── */
+.g-row{display:flex;align-items:center;gap:8px;padding:6px 16px;border-bottom:1px solid #e5e7eb}
+.g-row:last-child{border-bottom:none}
+.g-row:nth-child(odd){background:#f7f8fa}
+.g-lbl{min-width:195px;font-size:12px;font-weight:600;color:#1b3a6b;flex-shrink:0}
+.g-bar{height:16px;border-radius:3px}
+.g-info{font-size:11px;color:#57606a;margin-left:6px;white-space:nowrap}
+.g-legend{display:flex;gap:16px;padding:10px 16px 4px;font-size:11px;color:#57606a}
+.g-dot{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:4px;vertical-align:middle}
+
+/* ── Action rows ── */
+.a-row{display:flex;align-items:flex-start;gap:10px;padding:9px 16px;border-bottom:1px solid #e5e7eb}
+.a-row:last-child{border-bottom:none}
+.a-row:nth-child(odd){background:#f7f8fa}
+.a-num{min-width:22px;font-weight:700;color:#2563eb;font-size:13px;flex-shrink:0}
+.a-text{flex:1;font-size:13px;color:#1f2328}
+.a-meta{font-size:11px;color:#57606a;margin-top:2px}
+
+/* ── Dep table col ── */
+.col-dep{width:220px}
+.col-impact{width:260px}
+.col-owner-dep{white-space:nowrap}
+
+footer{text-align:center;font-size:11px;color:#57606a;border-top:1px solid #e5e7eb;padding-top:14px;margin-top:36px}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+
+<div class="banner">
+  <div class="eyebrow">OneIT ITOM · Infrastructure Management · Confidential</div>
+  <h1>REST Automated Deployment Portal<br />Project Plan</h1>
+  <div class="meta-grid">
+    <div class="meta-box"><div class="lbl">Project Name</div><div class="val">REST Automated Deployment Portal</div></div>
+    <div class="meta-box"><div class="lbl">Sponsor</div><div class="val">OneIT ITOM Leadership</div></div>
+    <div class="meta-box"><div class="lbl">Project Lead</div><div class="val">Pravin More</div></div>
+    <div class="meta-box"><div class="lbl">Developer</div><div class="val">TBD (onboarding in progress)</div></div>
+    <div class="meta-box"><div class="lbl">Start Date</div><div class="val">17-May-2026</div></div>
+    <div class="meta-box"><div class="lbl">Target Go-Live</div><div class="val">24-Oct-2026  <span class="badge b-amber">In Progress</span></div></div>
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="sec-hdr">Executive Summary</div>
+  <div class="sec-body">
+    <div class="hi-row done"><span class="hi-icon">✅</span><span class="hi-phase">Scope &amp; Feasibility</span><span class="hi-detail">Completed – Project scope, feasibility study for CMC, NIM, STELAr, and Golden Images finalized.</span></div>
+    <div class="hi-row done"><span class="hi-icon">✅</span><span class="hi-phase">Discovery &amp; Assessment</span><span class="hi-detail">Completed – Functional requirements and feature comparison chart delivered.</span></div>
+    <div class="hi-row done"><span class="hi-icon">✅</span><span class="hi-phase">Architecture Design</span><span class="hi-detail">Completed – HLD, LLD, integration diagrams, and deployment architecture documented.</span></div>
+    <div class="hi-row prog"><span class="hi-icon">🟡</span><span class="hi-phase">Front-End &amp; API Design</span><span class="hi-detail">In Progress – API &amp; integration assessment underway; mock-up creation in progress.</span></div>
+    <div class="hi-row plan"><span class="hi-icon">⏳</span><span class="hi-phase">UI Development</span><span class="hi-detail">Planned – Landing page development awaiting developer (TBD) onboarding. 01-Aug-26 → 03-Aug-26.</span></div>
+    <div class="hi-row plan"><span class="hi-icon">⏳</span><span class="hi-phase">Backend Integration</span><span class="hi-detail">Planned – REST UI integration with CMC, NIM, STELAr deployment tools. 04-Sep-26 → 21-Sep-26.</span></div>
+    <div class="hi-row plan"><span class="hi-icon">⏳</span><span class="hi-phase">Testing</span><span class="hi-detail">Planned – Basic deployment testing followed by customized image deployment testing. 22-Sep-26 → 07-Oct-26.</span></div>
+    <div class="hi-row plan"><span class="hi-icon">⏳</span><span class="hi-phase">UAT &amp; Go-Live</span><span class="hi-detail">Planned – Business sign-off, production readiness review, and production deployment. Go-Live: 14-Oct-26.</span></div>
+    <div class="metrics">
+      <div class="m-box"><div class="num">14</div><div class="cap">Total Phases</div></div>
+      <div class="m-box"><div class="num" style="color:#16a34a">3</div><div class="cap">Completed</div></div>
+      <div class="m-box"><div class="num" style="color:#d97706">1</div><div class="cap">In Progress</div></div>
+      <div class="m-box"><div class="num" style="color:#2563eb">5</div><div class="cap">Planned</div></div>
+      <div class="m-box"><div class="num" style="color:#1b3a6b">~23wks</div><div class="cap">Project Duration</div></div>
+      <div class="m-box"><div class="num" style="color:#7c3aed">2+</div><div class="cap">Team Size</div></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="sec-hdr">Full Project Plan</div>
+  <div class="sec-body" style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr>
+          <th class="col-task">Task #</th>
+          <th>Phase / Sub-Task</th>
+          <th>Deliverables</th>
+          <th class="col-date">Start Date</th>
+          <th class="col-date">End Date</th>
+          <th class="col-status">Status</th>
+          <th class="col-owner">Owner</th>
+          <th>Comments / Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr class="tr-parent">
+          <td class="col-task">1</td><td>Scope Definition</td><td>Project scope, assumptions, constraints, exclusions</td>
+          <td class="col-date">17-May-26</td><td class="col-date">01-Jun-26</td>
+          <td><span class="badge b-green">Completed</span></td><td class="col-owner">Pravin More</td>
+          <td style="font-size:11px;color:#57606a">Defined project scope. Project Charter &amp; Stakeholder Register produced.</td>
+        </tr>
+        
+        <tr class="tr-parent">
+          <td class="col-task">2</td><td>Feasibility Study</td><td>Feasibility Report</td>
+          <td class="col-date">17-May-26</td><td class="col-date">01-Jun-26</td>
+          <td><span class="badge b-green">Completed</span></td><td class="col-owner">Pravin More</td>
+          <td style="font-size:11px;color:#57606a">Evaluation of existing solutions completed.</td>
+        </tr>
+        <tr class="tr-sub"><td class="col-task">2.1</td><td>↳ Evaluated CMC</td><td>CMC image deployment overview and evaluation</td><td></td><td></td><td><span class="badge b-green">Completed</span></td><td class="col-owner">Pravin More</td><td></td></tr>
+        <tr class="tr-sub"><td class="col-task">2.2</td><td>↳ Evaluated Golden Image</td><td>Golden Image overview and evaluation</td><td></td><td></td><td><span class="badge b-green">Completed</span></td><td class="col-owner">Pravin More</td><td></td></tr>
+        <tr class="tr-sub"><td class="col-task">2.3</td><td>↳ Evaluated NIM</td><td>STI NIM overview and evaluation</td><td></td><td></td><td><span class="badge b-green">Completed</span></td><td class="col-owner">Pravin More</td><td></td></tr>
+        <tr class="tr-sub"><td class="col-task">2.4</td><td>↳ Evaluated STELAr NIM</td><td>STELAr NIM evaluation</td><td></td><td></td><td><span class="badge b-green">Completed</span></td><td class="col-owner">Pravin More</td><td></td></tr>
+        
+        <tr class="tr-parent">
+          <td class="col-task">3</td><td>Current State Assessment</td><td>As-Is Architecture Document</td>
+          <td class="col-date">17-May-26</td><td class="col-date">01-Jun-26</td>
+          <td><span class="badge b-green">Completed</span></td><td class="col-owner">Pravin More</td>
+          <td style="font-size:11px;color:#57606a">Existing deployment workflow and toolchain documented.</td>
+        </tr>
+        
+        <tr class="tr-parent">
+          <td class="col-task">4</td><td>Discovery &amp; Assessment</td><td>BRD, FRS, Feature Comparison Chart</td>
+          <td class="col-date">02-Jun-26</td><td class="col-date">14-Jun-26</td>
+          <td><span class="badge b-green">Completed</span></td><td class="col-owner">Pravin More</td>
+          <td style="font-size:11px;color:#57606a">Feature/capability comparison completed.</td>
+        </tr>
+        <tr class="tr-sub"><td class="col-task">4.1</td><td>↳ Requirement Gathering</td><td>BRD &amp; FRS</td><td class="col-date">02-Jun-26</td><td class="col-date">08-Jun-26</td><td><span class="badge b-green">Completed</span></td><td class="col-owner">Pravin More</td><td></td></tr>
+        <tr class="tr-sub"><td class="col-task">4.2</td><td>↳ Gap Analysis</td><td>Gap Analysis Report</td><td class="col-date">09-Jun-26</td><td class="col-date">14-Jun-26</td><td><span class="badge b-green">Completed</span></td><td class="col-owner">Pravin More</td><td></td></tr>
+        <tr class="tr-sub"><td class="col-task">4.3</td><td>↳ Feature Comparison</td><td>Feature Comparison Chart</td><td class="col-date">02-Jun-26</td><td class="col-date">14-Jun-26</td><td><span class="badge b-green">Completed</span></td><td class="col-owner">Pravin More</td><td></td></tr>
+        
+        <tr class="tr-parent">
+          <td class="col-task">5</td><td>Architecture Design</td><td>Architecture Document (HLD + LLD)</td>
+          <td class="col-date">15-Jun-26</td><td class="col-date">25-Jun-26</td>
+          <td><span class="badge b-green">Completed</span></td><td class="col-owner">Pravin More</td>
+          <td style="font-size:11px;color:#57606a">Overall architecture design completed.</td>
+        </tr>
+        <tr class="tr-sub"><td class="col-task">5.1</td><td>↳ High-Level Design (HLD)</td><td>High-Level Architecture Diagram</td><td class="col-date">15-Jun-26</td><td class="col-date">20-Jun-26</td><td><span class="badge b-green">Completed</span></td><td class="col-owner">Pravin More</td><td style="font-size:11px;color:#57606a">HLD Diagram produced.</td></tr>
+        <tr class="tr-sub"><td class="col-task">5.2</td><td>↳ Low-Level Design (LLD)</td><td>LLD Document &amp; Flowchart</td><td class="col-date">21-Jun-26</td><td class="col-date">25-Jun-26</td><td><span class="badge b-green">Completed</span></td><td class="col-owner">Pravin More</td><td style="font-size:11px;color:#57606a">LLD Document &amp; Flowchart delivered.</td></tr>
+        
+        <tr class="tr-parent">
+          <td class="col-task">6</td><td>Front-End &amp; API Design</td><td>UI Prototype, API Specification (OpenAPI/Swagger)</td>
+          <td class="col-date">24-Jun-26</td><td class="col-date">30-Jun-26</td>
+          <td><span class="badge b-amber">In Progress</span></td><td class="col-owner">Pravin More</td>
+          <td style="font-size:11px;color:#57606a">Explore APIs &amp; integration effort; mock-up creation in progress.</td>
+        </tr>
+        <tr class="tr-sub"><td class="col-task">6.1</td><td>↳ UI/UX Mockup</td><td>Wireframes &amp; Mockups</td><td class="col-date">24-Jun-26</td><td class="col-date">27-Jun-26</td><td><span class="badge b-amber">In Progress</span></td><td class="col-owner">Pravin More</td><td></td></tr>
+        <tr class="tr-sub"><td class="col-task">6.2</td><td>↳ UI Front-End Design</td><td>UI Design with mandatory fields</td><td class="col-date">28-Jun-26</td><td class="col-date">30-Jun-26</td><td><span class="badge b-amber">In Progress</span></td><td class="col-owner">Pravin More</td><td></td></tr>
+        <tr class="tr-sub"><td class="col-task">6.3</td><td>↳ Security Design</td><td>Security Design Document</td><td class="col-date">28-Jun-26</td><td class="col-date">30-Jun-26</td><td><span class="badge b-amber">In Progress</span></td><td class="col-owner">Pravin More</td><td></td></tr>
+        <tr class="tr-sub"><td class="col-task">6.4</td><td>↳ Database Design</td><td>Data Model</td><td class="col-date">28-Jun-26</td><td class="col-date">30-Jun-26</td><td><span class="badge b-amber">In Progress</span></td><td class="col-owner">Pravin More</td><td></td></tr>
+        <tr class="tr-sub"><td class="col-task">6.5</td><td>↳ Technology Evaluation</td><td>Technology Selection Document</td><td class="col-date">28-Jun-26</td><td class="col-date">30-Jun-26</td><td><span class="badge b-amber">In Progress</span></td><td class="col-owner">Pravin More</td><td></td></tr>
+        <tr class="tr-sub"><td class="col-task">6.6</td><td>↳ API Design</td><td>API Specification (OpenAPI/Swagger)</td><td class="col-date">28-Jun-26</td><td class="col-date">30-Jun-26</td><td><span class="badge b-amber">In Progress</span></td><td class="col-owner">Pravin More</td><td></td></tr>
+        
+        <tr class="tr-parent">
+          <td class="col-task">7</td><td>UI Development</td><td>Working UI (Landing Page + Request Submission)</td>
+          <td class="col-date">01-Aug-26</td><td class="col-date" style="color:#d97706;font-weight:700">03-Aug-26</td>
+          <td><span class="badge b-blue">Planned</span></td><td class="col-owner">Pravin More / Developer</td>
+          <td style="font-size:11px;color:#57606a">Awaiting Developer (TBD) onboarding.</td>
+        </tr>
+        <tr class="tr-sub"><td class="col-task">7.1</td><td>↳ Dev Sprint 1 – Login &amp; Landing Page</td><td>Working Login &amp; Landing Page</td><td class="col-date">01-Aug-26</td><td class="col-date">17-Aug-26</td><td><span class="badge b-blue">Planned</span></td><td class="col-owner">Developer</td><td></td></tr>
+        <tr class="tr-sub"><td class="col-task">7.2</td><td>↳ Dev Sprint 2 – Request Submission</td><td>Working Request Submission Form</td><td class="col-date">18-Aug-26</td><td class="col-date">03-Sep-26</td><td><span class="badge b-blue">Planned</span></td><td class="col-owner">Developer</td><td></td></tr>
+        
+        <tr class="tr-parent">
+          <td class="col-task">8</td><td>Backend Integration</td><td>Backend Services &amp; Deployment Connectors</td>
+          <td class="col-date">04-Sep-26</td><td class="col-date">21-Sep-26</td>
+          <td><span class="badge b-blue">Planned</span></td><td class="col-owner">Pravin More</td>
+          <td style="font-size:11px;color:#57606a">REST UI integration with CMC, NIM, STELAr deployment tools.</td>
+        </tr>
+        <tr class="tr-sub"><td class="col-task">8.1</td><td>↳ Dev Sprint 3 – SSCA &amp; API Layer</td><td>Backend Services</td><td class="col-date">04-Sep-26</td><td class="col-date">11-Sep-26</td><td><span class="badge b-blue">Planned</span></td><td class="col-owner">Developer</td><td></td></tr>
+        <tr class="tr-sub"><td class="col-task">8.2</td><td>↳ Dev Sprint 4 – CMC/NIM/STELAr</td><td>Deployment Connectors</td><td class="col-date">13-Sep-26</td><td class="col-date">21-Sep-26</td><td><span class="badge b-blue">Planned</span></td><td class="col-owner">Developer</td><td></td></tr>
+        <tr class="tr-sub"><td class="col-task">8.3</td><td>↳ Dev Sprint 5 – Notifications &amp; Audit</td><td>Reporting Module</td><td class="col-date">13-Sep-26</td><td class="col-date">21-Sep-26</td><td><span class="badge b-blue">Planned</span></td><td class="col-owner">Developer</td><td></td></tr>
+        
+        <tr class="tr-parent">
+          <td class="col-task">9</td><td>Testing</td><td>Integration, Performance &amp; Security Test Reports</td>
+          <td class="col-date">22-Sep-26</td><td class="col-date">07-Oct-26</td>
+          <td><span class="badge b-blue">Planned</span></td><td class="col-owner">Pravin More</td>
+          <td style="font-size:11px;color:#57606a">Test deployment requests through REST UI.</td>
+        </tr>
+        <tr class="tr-sub"><td class="col-task">9.1</td><td>↳ Integration Testing</td><td>Integration Test Report</td><td class="col-date">22-Sep-26</td><td class="col-date">29-Sep-26</td><td><span class="badge b-blue">Planned</span></td><td class="col-owner">QA/Pravin</td><td></td></tr>
+        <tr class="tr-sub"><td class="col-task">9.2</td><td>↳ Performance Testing</td><td>Performance Report</td><td class="col-date">24-Sep-26</td><td class="col-date">03-Oct-26</td><td><span class="badge b-blue">Planned</span></td><td class="col-owner">QA/Pravin</td><td></td></tr>
+        <tr class="tr-sub"><td class="col-task">9.3</td><td>↳ Security Testing</td><td>Security Assessment</td><td class="col-date">25-Sep-26</td><td class="col-date">03-Oct-26</td><td><span class="badge b-blue">Planned</span></td><td class="col-owner">Security Team</td><td></td></tr>
+        <tr class="tr-sub"><td class="col-task">9.4</td><td>↳ Basic Deployment Testing</td><td>Deployment Test Results</td><td class="col-date">25-Sep-26</td><td class="col-date">07-Oct-26</td><td><span class="badge b-blue">Planned</span></td><td class="col-owner">Pravin More</td><td></td></tr>
+        
+        <tr class="tr-parent">
+          <td class="col-task">10</td><td>UAT &amp; Sign-Off</td><td>UAT Sign-off, Customized Image Deployment Test Results</td>
+          <td class="col-date">08-Oct-26</td><td class="col-date">22-Oct-26</td>
+          <td><span class="badge b-blue">Planned</span></td><td class="col-owner">Pravin More</td>
+          <td style="font-size:11px;color:#57606a">Validate custom image deployments; business sign-off required.</td>
+        </tr>
+        
+        <tr class="tr-parent">
+          <td class="col-task">11</td><td>Production Readiness Review</td><td>Go-Live Checklist</td>
+          <td class="col-date">12-Oct-26</td><td class="col-date">29-Oct-26</td>
+          <td><span class="badge b-blue">Planned</span></td><td class="col-owner">Pravin More</td>
+          <td style="font-size:11px;color:#57606a">Confirm all readiness gates before go-live.</td>
+        </tr>
+        
+        <tr class="tr-parent">
+          <td class="col-task">12</td><td>Production Deployment 🚀</td><td>Production Release</td>
+          <td class="col-date">14-Oct-26</td><td class="col-date">16-Oct-26</td>
+          <td><span class="badge b-violet">Go-Live</span></td><td class="col-owner">Pravin More</td>
+          <td style="font-size:11px;color:#57606a">Go-Live.</td>
+        </tr>
+        
+        <tr class="tr-parent">
+          <td class="col-task">13</td><td>Hypercare Support</td><td>Hypercare Report</td>
+          <td class="col-date">17-Oct-26</td><td class="col-date">18-Oct-26</td>
+          <td><span class="badge b-blue">Planned</span></td><td class="col-owner">Pravin More</td>
+          <td style="font-size:11px;color:#57606a">2-week hypercare window post go-live.</td>
+        </tr>
+        
+        <tr class="tr-parent">
+          <td class="col-task">14</td><td>Project Closure</td><td>Project Closure Report</td>
+          <td class="col-date">19-Oct-26</td><td class="col-date">24-Oct-26</td>
+          <td><span class="badge b-blue">Planned</span></td><td class="col-owner">Pravin More</td>
+          <td style="font-size:11px;color:#57606a">Close project and hand over to operations.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="sec-hdr">Gantt Timeline</div>
+  <div class="sec-body">
+    <div class="g-legend">
+      <span><span class="g-dot" style="background:#16a34a"></span>Completed</span>
+      <span><span class="g-dot" style="background:#d97706"></span>In Progress</span>
+      <span><span class="g-dot" style="background:#2563eb"></span>Planned</span>
+      <span><span class="g-dot" style="background:#7c3aed"></span>Close-Out</span>
+    </div>
+    <div class="g-row"><div class="g-lbl">Scope Definition</div><div class="g-bar" style="width:46px;background:#16a34a"></div><div class="g-info">17-May-26 → 01-Jun-26 · 16d</div></div>
+    <div class="g-row"><div class="g-lbl">Feasibility Study</div><div class="g-bar" style="width:46px;background:#16a34a"></div><div class="g-info">17-May-26 → 01-Jun-26 · 16d</div></div>
+    <div class="g-row"><div class="g-lbl">Current State Assessment</div><div class="g-bar" style="width:46px;background:#16a34a"></div><div class="g-info">17-May-26 → 01-Jun-26 · 16d</div></div>
+    <div class="g-row"><div class="g-lbl">Discovery &amp; Assessment</div><div class="g-bar" style="width:37px;background:#16a34a"></div><div class="g-info">02-Jun-26 → 14-Jun-26 · 13d</div></div>
+    <div class="g-row"><div class="g-lbl">Architecture Design</div><div class="g-bar" style="width:31px;background:#16a34a"></div><div class="g-info">15-Jun-26 → 25-Jun-26 · 11d</div></div>
+    <div class="g-row"><div class="g-lbl">Front-End &amp; API Design</div><div class="g-bar" style="width:20px;background:#d97706"></div><div class="g-info">24-Jun-26 → 30-Jun-26 · 7d</div></div>
+    <div class="g-row"><div class="g-lbl" style="color:#d97706">UI Development</div><div class="g-bar" style="width:97px;background:#2563eb"></div><div class="g-info">01-Aug-26 → 03-Aug-26 · 33d</div></div>
+    <div class="g-row"><div class="g-lbl">Backend Integration</div><div class="g-bar" style="width:51px;background:#2563eb"></div><div class="g-info">04-Sep-26 → 21-Sep-26 · 18d</div></div>
+    <div class="g-row"><div class="g-lbl">Testing</div><div class="g-bar" style="width:49px;background:#2563eb"></div><div class="g-info">22-Sep-26 → 07-Oct-26 · 16d</div></div>
+    <div class="g-row"><div class="g-lbl">UAT &amp; Sign-Off</div><div class="g-bar" style="width:43px;background:#2563eb"></div><div class="g-info">08-Oct-26 → 22-Oct-26 · 15d</div></div>
+    <div class="g-row"><div class="g-lbl">Production Readiness Review</div><div class="g-bar" style="width:35px;background:#7c3aed"></div><div class="g-info">12-Oct-26 → 29-Oct-26 · 18d</div></div>
+    <div class="g-row"><div class="g-lbl">Production Deployment 🚀</div><div class="g-bar" style="width:6px;background:#7c3aed"></div><div class="g-info">14-Oct-26 → 16-Oct-26 · 3d</div></div>
+    <div class="g-row"><div class="g-lbl">Hypercare Support</div><div class="g-bar" style="width:6px;background:#7c3aed"></div><div class="g-info">17-Oct-26 → 18-Oct-26 · 2d</div></div>
+    <div class="g-row"><div class="g-lbl">Project Closure</div><div class="g-bar" style="width:20px;background:#7c3aed"></div><div class="g-info">19-Oct-26 → 24-Oct-26 · 6d</div></div>
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="sec-hdr">Risks &amp; Mitigations</div>
+  <div class="sec-body" style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr><th style="width:32px">#</th><th>Risk</th><th style="width:80px">Severity</th><th>Mitigation Strategy</th><th style="white-space:nowrap">Owner</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Resource availability – Developer (TBD) onboarding delay</td><td><span class="sev-h">High</span></td><td>Confirm onboarding date; explore parallel design tasks to de-risk timeline.</td><td style="white-space:nowrap">Pravin More / HR</td></tr>
+        <tr><td>2</td><td>API limitations discovered during assessment phase</td><td><span class="sev-m">Medium</span></td><td>Conduct early API validation and proof-of-concept before full development sprint.</td><td>Pravin More</td></tr>
+        <tr><td>3</td><td>Integration complexity with image deployment tools (CMC, NIM, STELAr)</td><td><span class="sev-h">High</span></td><td>Create proof-of-concept integration before committing to development sprints.</td><td style="white-space:nowrap">Pravin / Developer</td></tr>
+        <tr><td>4</td><td>Security vulnerabilities in REST API layer</td><td><span class="sev-h">High</span></td><td>Implement SSO, RBAC, API gateway, TLS, and conduct penetration testing pre-go-live.</td><td>Security Team</td></tr>
+        <tr><td>5</td><td>Deployment tool environment access delays</td><td><span class="sev-m">Medium</span></td><td>Raise access requests early; involve Infrastructure Team; track via JIRA.</td><td>Infrastructure Team</td></tr>
+        <tr><td>6</td><td>Scope creep during development sprints</td><td><span class="sev-m">Medium</span></td><td>Strict change control process; scope changes require sponsor approval.</td><td>Pravin More</td></tr>
+        <tr><td>7</td><td>Performance degradation under concurrent deployments</td><td><span class="sev-l">Low</span></td><td>Execute load and stress tests; set performance SLAs before go-live.</td><td>QA / Pravin More</td></tr>
+        <tr><td>8</td><td>SSCA integration authentication failures</td><td><span class="sev-m">Medium</span></td><td>Prototype SSCA auth flow in Sprint 1; validate token handling early.</td><td style="white-space:nowrap">Developer / Pravin More</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="sec-hdr">Key Dependencies</div>
+  <div class="sec-body" style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr><th style="width:32px">#</th><th class="col-dep">Dependency</th><th class="col-impact">Impact if Not Met</th><th class="col-owner-dep">Owner</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Developer onboarding</td><td>UI design and development activities cannot begin; delays all downstream phases.</td><td>Developer TBD / HR</td></tr>
+        <tr><td>2</td><td>API availability from CMC / NIM / STELAr teams</td><td>Integration timeline will slip; REST UI cannot connect to deployment backends.</td><td>Pravin More</td></tr>
+        <tr><td>3</td><td>Deployment tool environment access</td><td>Test execution blocked; testing phases delayed.</td><td>Infrastructure Team</td></tr>
+        <tr><td>4</td><td>SSCA integration credentials &amp; documentation</td><td>Backend integration sprint blocked; authentication layer cannot be built.</td><td>SSCA Team</td></tr>
+        <tr><td>5</td><td>Security review &amp; approval (SSO, RBAC)</td><td>Production deployment cannot proceed; go-live gate blocked.</td><td>Security Team</td></tr>
+        <tr><td>6</td><td>UAT resource availability (business stakeholders)</td><td>UAT sign-off delayed; project close delayed.</td><td>Business Sponsors</td></tr>
+        <tr><td>7</td><td>Infrastructure provisioning (servers, network, DNS)</td><td>Production environment not ready; go-live date at risk.</td><td>Infrastructure Team</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="sec-hdr teal">Next Steps &amp; Action Items</div>
+  <div class="sec-body">
+    <div class="a-row"><div class="a-num">1</div><div class="a-text">Confirm Developer (TBD) onboarding date and set up access<div class="a-meta">Owner: HR / Pravin More  ·  Due: 30-Jun-26  ·  <span class="badge b-amber">In Progress</span></div></div></div>
+    <div class="a-row"><div class="a-num">2</div><div class="a-text">Complete API assessment for CMC, NIM, and STELAr endpoints<div class="a-meta">Owner: Pravin More  ·  Due: 30-Jun-26  ·  <span class="badge b-amber">In Progress</span></div></div></div>
+    <div class="a-row"><div class="a-num">3</div><div class="a-text">Finalize landing page wireframe and get design approval<div class="a-meta">Owner: Pravin More  ·  Due: 30-Jun-26  ·  <span class="badge b-amber">In Progress</span></div></div></div>
+    <div class="a-row"><div class="a-num">4</div><div class="a-text">Request deployment tool environment access for testing<div class="a-meta">Owner: Infrastructure Team  ·  Due: 01-Aug-26  ·  <span class="badge b-blue">Planned</span></div></div></div>
+    <div class="a-row"><div class="a-num">5</div><div class="a-text">Initiate SSCA integration documentation review<div class="a-meta">Owner: Pravin More / SSCA Team  ·  Due: 01-Aug-26  ·  <span class="badge b-blue">Planned</span></div></div></div>
+    <div class="a-row"><div class="a-num">6</div><div class="a-text">Begin backend integration Sprint 3 (SSCA &amp; API Layer)<div class="a-meta">Owner: Developer  ·  Due: 04-Aug-26  ·  <span class="badge b-blue">Planned</span></div></div></div>
+    <div class="a-row"><div class="a-num">7</div><div class="a-text">Schedule UAT sessions with business stakeholders<div class="a-meta">Owner: Pravin More  ·  Due: 22-Aug-26  ·  <span class="badge b-blue">Planned</span></div></div></div>
+    <div class="a-row"><div class="a-num">8</div><div class="a-text">Submit security review request for REST API design<div class="a-meta">Owner: Pravin More / Security Team  ·  Due: 22-Aug-26  ·  <span class="badge b-blue">Planned</span></div></div></div>
+    <div class="a-row"><div class="a-num">9</div><div class="a-text">Prepare go-live checklist and production readiness review<div class="a-meta">Owner: Pravin More  ·  Due: 23-Sep-26  ·  <span class="badge b-blue">Planned</span></div></div></div>
+    <div class="a-row"><div class="a-num">10</div><div class="a-text">Conduct hypercare monitoring post-deployment<div class="a-meta">Owner: Pravin More  ·  Due: 17-Oct-26  ·  <span class="badge b-blue">Planned</span></div></div></div>
+  </div>
+</div>
+
+<footer>
+  <div style="margin-bottom:5px">OneIT ITOM · REST Automated Deployment Portal · Project Plan v1.2 · Source: <em>REST-Deployment-Portal-Project-Plan-FINAL.xlsx</em></div>
+  Made with IBM Bob
+</footer>
+</div>
+</body>
+</html>
